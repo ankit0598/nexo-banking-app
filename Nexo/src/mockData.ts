@@ -17,7 +17,7 @@ import type {
 export const initialUser: User = {
   id: 'u1',
   fullName: 'Ankit Kumar',
-  email: 'ankit.kumar@email.com',
+  email: 'ankitkumarsingh059821@gmail.com',
   phone: '+91 8448355232',
   customerId: 'CIF1029384756',
   kycStatus: 'verified',
