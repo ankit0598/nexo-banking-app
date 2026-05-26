@@ -218,7 +218,7 @@ export const useStore = create<AppStore>()(
           propertyAssets: initialPropertyAssets,
         }),
     }),
-    { name: 'banking-app-store' },
+    { name: 'banking-app-store', version: 2 },
   ),
 )
 
