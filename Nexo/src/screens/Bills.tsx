@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useStore, formatINR } from '../store'
 import BillRow from '../components/BillRow'
 import Modal from '../components/Modal'
@@ -6,7 +6,8 @@ import type { Bill } from '../types'
 
 export default function Bills() {
   const bills = useStore((s) => s.bills)
-  const accounts = useStore((s) => s.accounts.filter((a) => a.type !== 'credit_card'))
+  const allAccounts = useStore((s) => s.accounts)
+  const accounts = useMemo(() => allAccounts.filter((a) => a.type !== 'credit_card'), [allAccounts])
   const payBill = useStore((s) => s.payBill)
 
   const [payTarget, setPayTarget] = useState<Bill | null>(null)

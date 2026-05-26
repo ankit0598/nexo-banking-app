@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useStore, formatINR } from '../store'
 import Modal from '../components/Modal'
 import type { TransactionMode } from '../types'
@@ -6,7 +6,8 @@ import type { TransactionMode } from '../types'
 const modes: TransactionMode[] = ['UPI', 'IMPS', 'NEFT']
 
 export default function Transfer() {
-  const accounts = useStore((s) => s.accounts.filter((a) => a.type !== 'credit_card'))
+  const allAccounts = useStore((s) => s.accounts)
+  const accounts = useMemo(() => allAccounts.filter((a) => a.type !== 'credit_card'), [allAccounts])
   const beneficiaries = useStore((s) => s.beneficiaries)
   const transfer = useStore((s) => s.transfer)
 
